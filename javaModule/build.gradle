@@ -1,0 +1,29 @@
+plugins{
+    id 'java'
+    id 'de.fuerstenau.buildconfig' version '1.1.8'
+//    id 'idea'
+}
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+buildConfig{
+    buildConfigField('String', 'MY_STR_FIELD', 'my message to the app')
+}
+
+//works for idea: https://github.com/mfuerstenau/gradle-buildconfig-plugin/issues/10#issuecomment-277073960
+//configurations.create('addBuildConfigToIdeaClasspath').dependencies.add(dependencies.create(files('build/gen/buildconfig/classes/main')))
+//idea.module.scopes.PROVIDED.plus += [ configurations.addBuildConfigToIdeaClasspath ]
+
+//https://github.com/mfuerstenau/gradle-buildconfig-plugin/issues/16#issuecomment-339293376
+// Add generated build-config directories to the main source set, so that the
+// IDE doesn't complain when the app references BuildConfig classes
+sourceSets.main.java{
+    srcDir new File(buildDir, 'gen/buildconfig/classes/main')
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
