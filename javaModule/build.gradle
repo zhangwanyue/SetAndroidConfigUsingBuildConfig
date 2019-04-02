@@ -11,6 +11,8 @@ dependencies {
 }
 
 buildConfig{
+    clsName = 'BuildConfig'      // sets the name of the BuildConfig class
+    packageName = 'javaBuildConfig'  // sets the package of the BuildConfig class,
     buildConfigField('String', 'MY_STR_FIELD', 'my message to the app')
 }
 

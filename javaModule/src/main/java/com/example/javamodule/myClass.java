@@ -1,5 +1,6 @@
 package com.example.javamodule;
-import ReadProperties.BuildConfig;
+
+import javaBuildConfig.BuildConfig;
 
 public class myClass {
     public static void main(String[] args){
